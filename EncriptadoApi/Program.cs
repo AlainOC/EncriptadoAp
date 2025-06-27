@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using EncriptadoApi.Data;
+using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Agregar servicios de Swagger
@@ -59,6 +61,12 @@ builder.Services.AddCors(options =>
                          .AllowAnyMethod()
                          .AllowAnyHeader());
 });
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<EncriptadoApi.Repositories.MensajeRepository>();
+builder.Services.AddScoped<EncriptadoApi.Services.MensajeService>();
 
 var app = builder.Build();
 

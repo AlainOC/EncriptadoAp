@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncriptadoApi", "EncriptadoApi\EncriptadoApi.csproj", "{6C0F8253-8E9C-E3F8-2762-DC1D492953B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C0F8253-8E9C-E3F8-2762-DC1D492953B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C0F8253-8E9C-E3F8-2762-DC1D492953B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C0F8253-8E9C-E3F8-2762-DC1D492953B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C0F8253-8E9C-E3F8-2762-DC1D492953B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {167B7152-536A-4399-AACC-72C373DB8F7E}
+	EndGlobalSection
+EndGlobal
