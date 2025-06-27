@@ -42,7 +42,6 @@ namespace EncriptadoApi.Services
             var mensaje = new Mensaje
             {
                 TextoEncriptado = textoEncriptado,
-                TextoDesencriptado = textoPlano,
                 FechaCreacion = DateTime.UtcNow
             };
             await _repositorio.AgregarMensajeAsync(mensaje);
@@ -55,7 +54,6 @@ namespace EncriptadoApi.Services
             var mensaje = new Mensaje
             {
                 TextoEncriptado = textoEncriptado,
-                TextoDesencriptado = textoDesencriptado,
                 FechaCreacion = DateTime.UtcNow
             };
             await _repositorio.AgregarMensajeAsync(mensaje);
