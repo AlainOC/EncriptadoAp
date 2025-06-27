@@ -75,7 +75,14 @@ app.Use(async (context, next) =>
 {
     var swaggerPaths = new[] { "/swagger", "/swagger/index.html", "/swagger/v1/swagger.json" };
     var isSwagger = swaggerPaths.Any(p => context.Request.Path.StartsWithSegments(p));
-    var remoteIp = context.Connection.RemoteIpAddress?.ToString();
+    string remoteIp = context.Connection.RemoteIpAddress?.ToString();
+
+    // Si hay un header X-Forwarded-For, úsalo
+    if (context.Request.Headers.ContainsKey("X-Forwarded-For"))
+    {
+        remoteIp = context.Request.Headers["X-Forwarded-For"].FirstOrDefault()?.Split(',')[0]?.Trim();
+    }
+
     if (isSwagger && remoteIp != "187.155.101.200")
     {
         context.Response.StatusCode = 403;
