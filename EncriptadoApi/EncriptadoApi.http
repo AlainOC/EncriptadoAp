@@ -1,0 +1,6 @@
+@EncriptadoApi_HostAddress = http://localhost:5163
+
+GET {{EncriptadoApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
