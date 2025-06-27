@@ -70,6 +70,21 @@ builder.Services.AddScoped<EncriptadoApi.Services.MensajeService>();
 
 var app = builder.Build();
 
+// Middleware para restringir acceso a Swagger UI solo a la IP de la escuela
+app.Use(async (context, next) =>
+{
+    var swaggerPaths = new[] { "/swagger", "/swagger/index.html", "/swagger/v1/swagger.json" };
+    var isSwagger = swaggerPaths.Any(p => context.Request.Path.StartsWithSegments(p));
+    var remoteIp = context.Connection.RemoteIpAddress?.ToString();
+    if (isSwagger && remoteIp != "187.155.101.200")
+    {
+        context.Response.StatusCode = 403;
+        await context.Response.WriteAsync("Acceso denegado: solo permitido desde la IP de la escuela.");
+        return;
+    }
+    await next();
+});
+
 // Habilitar Swagger en todos los entornos
 app.UseSwagger();
 app.UseSwaggerUI();
